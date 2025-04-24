@@ -3,23 +3,20 @@ describe('template spec', () => {
     cy.visit('localhost:3000')
 
     cy.get('.css-13i4rnv-MuiGrid-root').click()
-    cy.get('#firstName').type('Alex')
+    cy.get('#firstName').type('Alec')
     cy.get('#lastName').type('Lightwood')
-    cy.get('#username').type('Alex')
+    cy.get('#username').type('Alec')
     cy.get('#password').type('Magnus')
     cy.get('#confirmPassword').type('Magnus')
     cy.get('.MuiButton-colorPrimary').click()
-
-    
-
-  })
-  
-  it('sign in ok', () => {
-    cy.visit('localhost:3000')
-
-    cy.get('#username').type('Alex')
+    cy.get('#username').type('Alec')
     cy.get('#password').type('Magnus')
     cy.get('.MuiButton-colorPrimary').click()
+    cy.get('[data-test="user-onboarding-next"]').click()
+    cy.get('#bankaccount-bankName-input').type('Google Bank')
+    cy.get('#bankaccount-routingNumber-input').type('123456789')
+    cy.get('#bankaccount-accountNumber-input').type('987654321')
+    cy.get('[data-test="bankaccount-submit"]').click()
     
 
   })
@@ -33,4 +30,15 @@ describe('template spec', () => {
     cy.contains('Username or password is invalid').should('be.visible')
 
   })
+
+   it('login ok', () => {
+    cy.visit('localhost:3000')
+
+    cy.get('#username').type('Tessa')
+    cy.get('#password').type('Will')
+    cy.get('.MuiButton-colorPrimary').click()
+  
+  })
+  
+  
 })
