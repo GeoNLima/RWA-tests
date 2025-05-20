@@ -3,7 +3,8 @@ import LoginPage from '../pages/loginPage'
 import signUpPage from '../pages/signUpPage'
 
 const loginPage = new LoginPage()
-//const signupPage = new signUpPage()
+const signupPage = new signUpPage()
+
 
 describe('template spec', () => {
   
@@ -19,7 +20,7 @@ describe('template spec', () => {
   })
 
    
-  it.skip('sign up', () => {
+  it('sign up', () => {
     signupPage.accessSignUpPage()
     signupPage.accessSignUpPage(userData.signUpSuccess.firstname, userData.signUpSuccess.lastname, userData.userSuccess.username, userData.userSuccess.password)     
   })
