@@ -30,12 +30,7 @@ class signUpPage {
         cy.get(this.selectorsList().passwordField).type(password)
         cy.get(this.selectorsList().signInButton).click()
         
-    //cy.get('#bankaccount-bankName-input').type('Gringotes')
-    //cy.get('#bankaccount-routingNumber-input').type('234567891')
-    //cy.get('#bankaccount-accountNumber-input').type('876543219')
-    //cy.get('[data-test="bankaccount-submit"]').click()
-
-    }
+   }
 }
 
 export default signUpPage

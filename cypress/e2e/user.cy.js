@@ -19,7 +19,6 @@ describe('template spec', () => {
     loginPage.accessLoginPage()
   })
 
-   
   it('sign up', () => {
     signupPage.accessSignUpPage()
     signupPage.accessSignUpPage(userData.signUpSuccess.firstname, userData.signUpSuccess.lastname, userData.userSuccess.username, userData.userSuccess.password)     
@@ -27,35 +26,51 @@ describe('template spec', () => {
 
   
 
-  it.skip('Receiving money', () =>{
+  it('Send money having enough funds ', () =>{
     cy.visit('localhost:3000')
-
-    cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
-    cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
-    cy.get(selectorsList.signInButton).click()
-    cy.get('[data-test="sidenav-home"] > .MuiListItemText-root > .MuiTypography-root').click()
-    cy.get('[data-test="nav-top-new-transaction"]')
-    cy.get('#user-list-search-input').type('Lia Rosenbaum')
-    cy.contains('[data-test="user-list-item-i7q-Xc28L"]', 'Lia Rosenbaum').click()
-    cy.get('#amount').type('300')
+    
+    cy.get('#username').type('Luna')
+    cy.get('#password').type('Neville')
+    cy.get('[data-test="signin-submit"]').click()
+    cy.get('[data-test="nav-top-new-transaction"]').click()
+    cy.get('[data-test="user-list-search-input"]').type('Lia Rosenbaum')
+    cy.contains('[data-test="user-list-item-WHjJ4qR2R2"] > .MuiListItemText-root > .MuiTypography-body1', 'Lia Rosenbaum').click()
+    cy.get('#amount').type(300)
     cy.get('#transaction-create-description-input').type('pay rent')
-    cy.get('[data-test="transaction-create-form"] > .MuiGrid-container > :nth-child(1)')
+    cy.get('[data-test="transaction-create-form"] > .MuiGrid-container > :nth-child(1)').click()
+       
       
     });
     
 
   })
   
-  it.skip('Send money having enough funds', () =>{
+  it('Send money without enough funds', () =>{
     cy.visit('localhost:3000')
 
-    cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
-    cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
+    cy.get('#username').type('Luna')
+    cy.get('#password').type('Neville')
     cy.get('[data-test="signin-submit"]').click()
-    cy.get('[data-test="sidenav-home"] > .MuiListItemText-root > .MuiTypography-root')
-    cy.get('[data-test="sidenav-home"] > .MuiListItemText-root > .MuiTypography-root')
-    cy.get('#amount').type('300')
-    cy.get('#transaction-create-description-input').type('pay rent')
-    cy.get('[data-test="transaction-create-form"] > .MuiGrid-container > :nth-child(2)')
+    cy.get('[data-test="nav-top-new-transaction"]').click()
+    cy.get('[data-test="user-list-search-input"]').type('Lia Rosenbaum')
+    cy.contains('[data-test="user-list-item-WHjJ4qR2R2"] > .MuiListItemText-root > .MuiTypography-body1', 'Lia Rosenbaum').click()
+    cy.get('#amount').type(600)
+    cy.get('#transaction-create-description-input').type('pay internet')
+    cy.get('[data-test="transaction-create-form"] > .MuiGrid-container > :nth-child(1)').click()
+
+  })
+
+  it('Receiving money', () =>{
+    cy.visit('localhost:3000')
+
+    cy.get('#username').type('Luna')
+    cy.get('#password').type('Neville')
+    cy.get('[data-test="signin-submit"]').click()
+    cy.get('[data-test="nav-top-new-transaction"]').click()
+    cy.get('[data-test="user-list-search-input"]').type('Lia Rosenbaum')
+    cy.contains('[data-test="user-list-item-WHjJ4qR2R2"] > .MuiListItemText-root > .MuiTypography-body1', 'Lia Rosenbaum').click()
+    cy.get('#amount').type(600)
+    cy.get('#transaction-create-description-input').type('pay internet')
+    cy.get('[data-test="transaction-create-submit-request"]').click()
 
   })
