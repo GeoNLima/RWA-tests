@@ -1,12 +1,12 @@
 {
-    "signUpSuccess": {
-        "firstname": "Rony",
-        "lastname": "Weasley"
+  "signUpSuccess": {
+        "firstname": "Neville",
+        "lastname": "Longbotton"        
       },
     
     "userSuccess": {
-        "username": "Harry",
-        "password": "Ginny"
+        "username": "Luna",
+        "password": "Neville"
       },
   
       "userFail": {
